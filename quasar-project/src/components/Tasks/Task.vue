@@ -1,9 +1,6 @@
 <template>
-    <!-- <div> <slot></slot> {{ index }}</div>
-    <small>{{ task.dueDate }} @ {{ task.dueTime }}</small>
-    <button @click="deleteTask(index)"> X </button> -->
-
     <q-item 
+        @click="updateTask( {id: id, updates:{ completed: !task.completed}})"
         :class="!task.completed? 'bg-orange-1' : 'bg-green-1'"
         clickable 
         v-ripple>
@@ -47,8 +44,13 @@
 </template>
 
 <script>    
+    import { mapActions } from 'vuex'
+
     export default {
-        props: ['task', 'index']
+        props: ['task', 'id'],
+        methods: {
+            ...mapActions('storetasks', ['updateTask'])
+        }
     }
 </script>
 
