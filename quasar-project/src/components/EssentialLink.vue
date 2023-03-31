@@ -3,6 +3,7 @@
     clickable
     exact
     :to="link"
+    class="text-grey-5"
   >
     <q-item-section
       v-if="icon"
@@ -46,3 +47,7 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+
+</style>

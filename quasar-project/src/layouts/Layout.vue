@@ -3,15 +3,6 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
         <q-toolbar-title class="absolute-center">
           Awesome Todo
         </q-toolbar-title>
@@ -21,13 +12,16 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      breakpoint="768"
+      :breakpoint="768"
+      :width="250"
       show-if-above
-      bordered
+      bordered 
+      class="bg-primary"
     >
       <q-list>
         <q-item-label
           header
+          class="text-grey-4"
         >
           Navigation
         </q-item-label>
@@ -105,5 +99,8 @@
     .q-footer {
       display: none;
     }
+  }
+  .q-drawer .q-router-link--exact-active {
+    color:white !important;
   }
 </style>
