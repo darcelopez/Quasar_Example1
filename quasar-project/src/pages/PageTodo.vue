@@ -1,31 +1,15 @@
 <template>
   <q-page padding>
-    <ul>
-      <!-- <li v-for="(task, index) in tasks">
-        <div>{{ task.name }} {{ index }}</div>
-        <small>{{ task.dueDate }} @ {{ task.dueTime }}</small>
-        <button @click="deleteTask(index)"> X </button>
-      </li> -->
-      <task
-        v-for="(task, index) in tasks"
-        :key="task.id"
-        :task="task"
-        :index="index">
-        {{ task.name }}
-      </task>
-    </ul>
-   
+    <p>Todo page</p>
   </q-page>
 </template>
 
 <script>
   import { defineComponent } from 'vue'
-  // import Task from 'components/Task.vue'
 
   export default defineComponent({
     name: 'IndexPage',
     components: {
-      // 'task': Task
       'task' : require('components/Task.vue').default
     },
     data() {
