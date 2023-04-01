@@ -3,6 +3,7 @@
     <q-item-label header>User tasks list</q-item-label>
 
     <q-list 
+      v-if="Object.keys(tasks).length"
       separator 
       bordered>
         <task
@@ -25,13 +26,14 @@
     </div>
 
     <q-dialog v-model="showAddTask">
-      <add-task>
+      <add-task
+        @close="showAddTask=false">
       </add-task>
     </q-dialog>
 
   </q-page>
 </template>
-
+ 
 <script>
   import { defineComponent } from 'vue'
   import { mapGetters } from 'vuex'
