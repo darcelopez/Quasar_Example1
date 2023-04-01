@@ -1,80 +1,24 @@
 <template>
      <q-card>
-        <q-card-section class="row">
-          <div class="text-h6">Add task</div>
-          <q-space />
-          <q-btn
-             v-close-popup
-             flat
-             round
-             dense
-             icon="close"
-             />
-        </q-card-section>
-
+        <modal-header>Add Task</modal-header>
         <form @submit.prevent="submitForm">
             <q-card-section>
-                <div class="row q-mb-sm">
-                <q-input 
-                    outlined
+
+                <modal-task-name
                     v-model="tasktoSumbit.name"
-                    :rules="[val => !!val || 'Field is required']"
-                    autofocus
-                    ref="name"
-                    label="Task name"
-                    class="col">
-                    <template v-slot:append>
-                        <q-icon
-                            v-if="tasktoSumbit.name"
-                            name="close"
-                            @click="tasktoSumbit.name=''"
-                            class="cursor-pointer"/>
-                    </template>
-                </q-input>
-        
-                </div>   
-                <div 
-                    class="row q-mb-sm pl-16">
-                    <q-input 
-                        oulined
-                        label="Due date"
-                        v-model="tasktoSumbit.dueDate">
-                        <template v-slot:append>
-                            <q-icon
-                                v-if="tasktoSumbit.dueDate"
-                                name="close"
-                                @click="clearDueDate"
-                                class="cursor-pointer"/>
-                            <q-icon name="event" class="cursos-pointer">
-                                <q-popup-proxy>
-                                    <q-date v-model="tasktoSumbit.dueDate" />
-                                </q-popup-proxy>
-                            </q-icon>
-                        </template>
-                    </q-input>
-                </div>
-                <div 
+                    ref="modalTaskName"
+                />
+
+                <modal-task-duedate
+                    v-model="tasktoSumbit.dueDate"
+                    @clear="clearDueDate"
+                />
+
+                <modal-task-duetime
                     v-if="tasktoSumbit.dueDate"
-                    class="row q-mb-sm pl-16">
-                    <q-input 
-                        oulined
-                        label="Due time"
-                        v-model="tasktoSumbit.dueTime"
-                        class="col">
-                        <template v-slot:append>
-                            <q-icon
-                                v-if="tasktoSumbit.dueTime"
-                                name="close"
-                                @click="tasktoSumbit.dueTime=''"
-                                class="cursor-pointer"/>
-                            <q-icon name="access_time" class="cursos-pointer">
-                                <q-popup-proxy>
-                                    <q-time v-model="tasktoSumbit.dueTime" />
-                                </q-popup-proxy>
-                            </q-icon>
-                        </template>
-                    </q-input>
-                </div>     
+                    v-model="tasktoSumbit.dueTime"
+                />
+               
             </q-card-section>
 
             <q-card-actions align="right">
@@ -83,6 +27,7 @@
                 color="primary" 
                 type="submit"/>
             </q-card-actions>
+
         </form>
        
       </q-card>
@@ -91,6 +36,12 @@
 <script>
     import { mapActions } from 'vuex'
     export default {
+        components: {
+            'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
+            'modal-task-name': require('components/Tasks/Modals/Shared/ModalTaskName.vue').default,
+            'modal-task-duedate': require('components/Tasks/Modals/Shared/ModalTaskDueDate.vue').default,
+            'modal-task-duetime': require('components/Tasks/Modals/Shared/ModalTaskDueTime.vue').default,
+        },
         data() {
             return {
                 tasktoSumbit: {
@@ -105,8 +56,8 @@
             ...mapActions('storetasks', ['addTask']),
             submitForm() {
                 console.log('submitForm')
-                this.$refs.name.validate()
-                if (!this.$refs.name.hasError){
+                this.$refs.modalTaskName.$refs.name.validate()
+                if (!this.$refs.modalTaskName.$refs.name.hasError){
                     this.submitTask()
                 }
             },
@@ -117,6 +68,9 @@
             clearDueDate() {
                 this.tasktoSumbit.dueDate=''
                 this.tasktoSumbit.dueTime=''
+            },
+            handleChangeName(){
+                console.log('AddTask view - handleChangeName')
             }
         }
     }
