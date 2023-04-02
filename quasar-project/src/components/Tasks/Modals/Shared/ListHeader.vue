@@ -4,15 +4,12 @@
         inline-actions 
         class="list-header text-white bg-orange-4 text-center">
         <span class="text-bold text-subtitle1"><slot></slot></span> 
-        <!-- <span class="text-bold text-subtitle1">{{title}}</span> -->
-
     </q-banner>
 </template>
 <script>
-export default {
-    // props:['title']
+    export default {
 
-}
+    }
 </script>
 
 <style>

@@ -1,9 +1,6 @@
 <template>
     <div>
         <list-header>Todo</list-header>
-        <!-- <list-header 
-            :title="title"
-        /> -->
         <q-list 
             v-if="Object.keys(tasksTodo).length"
             separator 
@@ -21,11 +18,6 @@
 <script>
     export default {
         props:['tasksTodo'],
-        // data(){
-        //     return {
-        //         title:'Todo'
-        //     } 
-        // },
         components: {
             'task' : require('components/Tasks/Task.vue').default,
             'list-header' : require('components/Tasks/Modals/Shared/ListHeader.vue').default,

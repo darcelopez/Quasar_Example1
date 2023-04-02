@@ -13,7 +13,6 @@
                 </task>
         </q-list>
     </div>
-    
 </template>
 
 <script>
