@@ -1,5 +1,5 @@
 # Quasar_Example1
-Example of how to use Quasar framework
+Example of how to use Quasar framework with Vue3 and Vuex
 
 Instructions from: Danny Connell
 
