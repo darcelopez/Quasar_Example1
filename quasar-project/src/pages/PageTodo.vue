@@ -2,18 +2,13 @@
   <q-page class="q-pa-md">
     <q-item-label header>User tasks list</q-item-label>
 
-    <q-list 
-      v-if="Object.keys(tasks).length"
-      separator 
-      bordered>
-        <task
-          v-for="(task, key) in tasks"
-          :key="key"
-          :id="key"
-          :task="task">
-        </task>
+    <task-todo 
+      :tasksTodo="tasksTodo"/>
 
-    </q-list>
+    <hr>
+
+    <task-completed 
+      :tasksCompleted="tasksCompleted"/>
 
     <div class="absolute-bottom text-center q-mb-lg">
         <q-btn
@@ -39,8 +34,9 @@
   export default defineComponent({
     name: 'IndexPage',
     components: {
-      'task' : require('components/Tasks/Task.vue').default,
       'add-task' : require('components/Tasks/Modals/AddTask.vue').default,
+      'task-todo' : require('components/Tasks/TasksTodo.vue').default,
+      'task-completed' : require('components/Tasks/TasksCompleted.vue').default,
     },
     data() {
       return {
@@ -48,11 +44,11 @@
       }
     },
     computed: {
-      ...mapGetters('storetasks', ['tasks']),
+      ...mapGetters('storetasks', ['tasksTodo', 'tasksCompleted']),
       // tasks() {
       //   console.log('Computed -> tasks')
-      //   console.log(this.$store.getters['storetasks/tasks'])
-      //   return this.$store.getters['storetasks/tasks']
+      //   console.log(this.$store.getters['storetasks/tasksTodo'])
+      //   return this.$store.getters['storetasks/tasksTodo']
       // }
     },
     methods: {
