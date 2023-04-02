@@ -1,13 +1,18 @@
 <template>
   <q-page class="q-pa-md">
-    <q-item-label header>User tasks list</q-item-label>
+
+    <no-tasks
+      v-if="!Object.keys(tasksTodo).length"
+      @showAddTask="showAddTask = true"
+
+    ></no-tasks>
 
     <task-todo 
+      v-if="Object.keys(tasksTodo).length"
       :tasksTodo="tasksTodo"/>
 
-    <hr>
-
     <task-completed 
+      v-if="Object.keys(tasksCompleted).length"
       :tasksCompleted="tasksCompleted"/>
 
     <div class="absolute-bottom text-center q-mb-lg">
@@ -37,6 +42,7 @@
       'add-task' : require('components/Tasks/Modals/AddTask.vue').default,
       'task-todo' : require('components/Tasks/TasksTodo.vue').default,
       'task-completed' : require('components/Tasks/TasksCompleted.vue').default,
+      'no-tasks' : require('components/Tasks/NoTasks.vue').default,
     },
     data() {
       return {
