@@ -53,7 +53,7 @@
                }
            }
        },
-       mounted(){
+       created(){
         this.tasktoSumbit = Object.assign({}, this.task)
        },
        methods: {
