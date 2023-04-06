@@ -1,6 +1,7 @@
 <template>
     <q-input
         v-model="searchField"
+        @keyup.esc="searchField=''"
         v-select-all
         outlined
         class="col"
