@@ -13,3 +13,7 @@ export function addTask (state, payload) {
 export function setSearch(state, searchValue) {
     state.search = searchValue
 }
+
+export function setSortBy(state, sortByValue) {
+    state.sort = sortByValue
+}

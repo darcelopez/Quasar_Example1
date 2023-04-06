@@ -20,3 +20,7 @@ export function addTask ({ commit }, task) {
 export function setSearch({ commit }, searchValue) {
     commit('setSearch', searchValue)
 }
+
+export function setSortBy({ commit }, sortByValue) {
+    commit('setSortBy', sortByValue)
+}

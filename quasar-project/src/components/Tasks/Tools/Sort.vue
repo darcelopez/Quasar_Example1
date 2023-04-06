@@ -10,10 +10,12 @@
      stack-label />
 </template>
 <script>
+    import { mapState, mapActions } from 'vuex'
+
     export default {
         data() {
             return {
-                sortBy: null,
+                sortBy: this.sortBy,
                 options: [
                     {
                         label:'Name',
@@ -24,6 +26,21 @@
                     }
                 ],
             }
+        },
+        computed: {
+            ...mapState('storetasks', ['sort']),
+            sortBy: {
+                get() {
+                    this.sort
+                },
+                set(value) {
+                    this.setSortBy(value)
+                }
+            }
+
+        },
+        methods: {
+            ...mapActions('storetasks', ['setSortBy'])
         }
     }
 </script>
