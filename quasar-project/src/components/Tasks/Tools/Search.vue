@@ -1,6 +1,7 @@
 <template>
     <q-input
         v-model="searchField"
+        v-select-all
         outlined
         class="col"
         label="Search"
@@ -18,6 +19,7 @@
 </template>
 <script>
     import { mapState, mapActions} from 'vuex'
+    import { selectAll } from 'src/directives/directive-select-all'
 
     export default {
         computed: {
@@ -33,6 +35,9 @@
         },
         methods: {
             ...mapActions('storetasks', ['setSearch'])
+        },
+        directives: {
+            selectAll
         }
 
     }
