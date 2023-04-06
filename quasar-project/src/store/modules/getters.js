@@ -21,11 +21,12 @@ export function tasksCompleted(state, getters) {
     });
     return taskCompleted
 }
-export function tasksFiltered(state) {
-    let tasksFiltered = {}
+export function tasksFiltered(state, getters) {
+    let tasksSorted = getters.tasksSorted,
+        tasksFiltered = {}
     if (state.search){
-        Object.keys(state.tasks).forEach(key => {
-            let task = state.tasks[key],
+        Object.keys(tasksSorted).forEach(key => {
+            let task = tasksSorted[key],
                 taskNameLowerCase = task.name.toLowerCase(),
                 searchLowerCase = state.search.toLowerCase()
 
@@ -35,5 +36,24 @@ export function tasksFiltered(state) {
         });
         return tasksFiltered
     }
-    return state.tasks
+    return tasksSorted
+}
+
+export function tasksSorted(state) {
+    let tasksSorted = {},
+        keysOrdered = Object.keys(state.tasks)
+    
+    keysOrdered.sort((a,b) => {
+        let taskAProp = state.tasks[a].name.toLowerCase()
+        let taskBProp = state.tasks[b].name.toLowerCase()
+
+        if (taskAProp > taskBProp) return 1
+        else if  (taskAProp < taskBProp) return -1
+        else return 0
+    })
+
+    keysOrdered.forEach(key => {
+        tasksSorted[key] = state.tasks[key]
+    })
+    return tasksSorted
 }
