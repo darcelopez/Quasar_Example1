@@ -2,6 +2,7 @@
     <q-item 
         @click="updateTask( {id: id, updates:{ completed: !task.completed}})"
         :class="!task.completed? 'bg-orange-1' : 'bg-green-1'"
+        v-touch-hold:1000.mouse="handleTouch"
         clickable 
         v-ripple>
         <q-item-section side top>
@@ -108,8 +109,11 @@
                     }).onDismiss(() => {
                         // console.log('I am triggered on both OK and Cancel')
                     })
-                        }
-                    }
+            },
+            handleTouch() {
+                this.showEditTask = true
+            }
+        }
     }
 </script>
 
