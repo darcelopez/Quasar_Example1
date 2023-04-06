@@ -16,3 +16,7 @@ export function addTask ({ commit }, task) {
     }
     commit('addTask', payload)
 }
+
+export function setSearch({ commit }, searchValue) {
+    commit('setSearch', searchValue)
+}

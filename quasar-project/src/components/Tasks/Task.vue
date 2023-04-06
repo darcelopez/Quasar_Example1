@@ -5,7 +5,9 @@
         clickable 
         v-ripple>
         <q-item-section side top>
-            <q-checkbox v-model="task.completed"/>
+            <q-checkbox 
+                :value="task.completed"
+                class="no-pointer-events"/>
         </q-item-section>
 
         <q-item-section>

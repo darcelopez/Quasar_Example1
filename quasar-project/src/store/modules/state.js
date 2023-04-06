@@ -21,7 +21,8 @@ export default function () {
         dueTime: '18:30'
       },
       
-    }
+    },
+    search: ''
     // tasks: [
     //   {
     //     id: 1,

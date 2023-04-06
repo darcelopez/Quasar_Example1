@@ -9,3 +9,7 @@ export function deleteTask (state, id) {
 export function addTask (state, payload) {
     state.tasks[payload.id] = payload.task
 }
+
+export function setSearch(state, searchValue) {
+    state.search = searchValue
+}
