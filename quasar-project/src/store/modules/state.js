@@ -22,7 +22,8 @@ export default function () {
       },
       
     },
-    search: ''
+    search: '',
+    sort:'name' 
     // tasks: [
     //   {
     //     id: 1,
