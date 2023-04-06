@@ -15,7 +15,6 @@
     export default {
         data() {
             return {
-                sortBy: this.sortBy,
                 options: [
                     {
                         label:'Name',

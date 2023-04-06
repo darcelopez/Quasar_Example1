@@ -7,7 +7,7 @@
         v-ripple>
         <q-item-section side top>
             <q-checkbox 
-                :value="task.completed"
+                :model-value="task.completed"
                 class="no-pointer-events"/>
         </q-item-section>
 
@@ -33,7 +33,7 @@
                     <q-item-label 
                         class="row justify-end"
                         caption>
-                        {{ task.dueDate }}
+                        {{ niceDate }}
                     </q-item-label>
                     <q-item-label 
                         class="row justify-end"
@@ -77,6 +77,8 @@
 
 <script>    
     import { mapActions } from 'vuex'
+    import { date } from 'quasar'
+    const { formatDate } = date
 
     export default {
         props: ['task', 'id'],
@@ -86,6 +88,11 @@
         data() {
             return {
                 showEditTask: false
+            }
+        },
+        computed: {
+            niceDate(){
+                return formatDate(this.task.dueDate, 'MMM D')
             }
         },
         methods: {
