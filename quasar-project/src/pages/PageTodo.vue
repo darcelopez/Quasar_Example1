@@ -1,42 +1,48 @@
 <template>
   <q-page class="q-pa-md">
+    <div class="q-pa-md absolute full-width full-height column">
 
-    <div class="row q-mb-lg">
-      <search />
-      <sort />
-    </div>
+      <div class="row q-mb-lg">
+        <search />
+        <sort />
+      </div>
 
-    <p v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length">No search results</p>
+      <p v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length">No search results</p>
+      
+      <q-scroll-area
+        class="q-scroll-area-tasks q-mb-lg">
+        <no-tasks
+          v-if="!Object.keys(tasksTodo).length && !search"
+          @showAddTask="showAddTask = true"
+        ></no-tasks>
+
+        <task-todo 
+          v-if="Object.keys(tasksTodo).length"
+          :tasksTodo="tasksTodo"/>
+
+        <task-completed 
+          v-if="Object.keys(tasksCompleted).length"
+          class="q-mb-lg"
+          :tasksCompleted="tasksCompleted"/>
+      </q-scroll-area>
+
+      <div class="absolute-bottom text-center no-pointer-events q-mb-lg">
+          <q-btn
+            @click="showAddTask=true"
+            round
+            class="all-pointer-events"
+            color="primary"
+            size="24px"
+            icon="add"
+            />
+      </div>
+
+      <q-dialog v-model="showAddTask">
+        <add-task @close="showAddTask=false" />
+      </q-dialog>
+
     
-    <div class="relative-position">
-      <no-tasks
-        v-if="!Object.keys(tasksTodo).length && !search"
-        @showAddTask="showAddTask = true"
-      ></no-tasks>
-
-      <task-todo 
-        v-if="Object.keys(tasksTodo).length"
-        :tasksTodo="tasksTodo"/>
-
-      <task-completed 
-        v-if="Object.keys(tasksCompleted).length"
-        :tasksCompleted="tasksCompleted"/>
-    </div>
-
-    <div class="absolute-bottom text-center q-mb-lg">
-        <q-btn
-          @click="showAddTask=true"
-          round
-          color="primary"
-          size="24px"
-          icon="add"
-          />
-    </div>
-
-    <q-dialog v-model="showAddTask">
-      <add-task @close="showAddTask=false" />
-    </q-dialog>
-
+    </div>   
   </q-page>
 </template>
  
@@ -77,5 +83,9 @@
 </script>
 
 <style>
+  .q-scroll-area-tasks {
+    display:flex;
+    flex-grow:1;
+  }
 
 </style>
