@@ -126,7 +126,7 @@
             searchHighLight(value){
                 if (this.search){
                     // to capture even with lower or Cap cases
-                    let searchRegExp = new RegExp(this.search, 'i')
+                    let searchRegExp = new RegExp(this.search, 'ig')
                     return value.replace(searchRegExp, (match) => {
                         return '<span class="bg-yellow-6">' + match + '</span>'
                     })
