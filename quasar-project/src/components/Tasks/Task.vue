@@ -14,12 +14,13 @@
         <q-item-section>
             <q-item-label
                 :class="{ 'text-strikethrough' : task.completed }"
-            >{{ task.name }}</q-item-label>
+                v-html="searchHighLight(task.name)"
+            ></q-item-label>
         </q-item-section>
 
         <q-item-section 
             v-if="task.dueDate"
-            side>
+            side>  
             <div class="row">
                 <div class="column justify-center">
                     <q-icon 
@@ -76,7 +77,7 @@
 </template>
 
 <script>    
-    import { mapActions } from 'vuex'
+    import { mapState, mapActions } from 'vuex'
     import { date } from 'quasar'
     const { formatDate } = date
 
@@ -91,7 +92,9 @@
             }
         },
         computed: {
+            ...mapState('storetasks', ['search']),
             niceDate(){
+                console.log('niceDate')
                 return formatDate(this.task.dueDate, 'MMM D')
             }
         },
@@ -119,9 +122,22 @@
             },
             handleTouch() {
                 this.showEditTask = true
+            },
+            searchHighLight(value){
+                if (this.search){
+                    // to capture even with lower or Cap cases
+                    let searchRegExp = new RegExp(this.search, 'i')
+                    return value.replace(searchRegExp, (match) => {
+                        return '<span class="bg-yellow-6">' + match + '</span>'
+                    })
+                    // standard way
+                    // return value.replace(this.search, '<span class="bg-yellow-6">' + this.search + '</span>')
+                }
+                return value
             }
         }
     }
+
 </script>
 
 <style>
