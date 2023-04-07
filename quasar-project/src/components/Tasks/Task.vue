@@ -94,7 +94,6 @@
         computed: {
             ...mapState('storetasks', ['search']),
             niceDate(){
-                console.log('niceDate')
                 return formatDate(this.task.dueDate, 'MMM D')
             }
         },
