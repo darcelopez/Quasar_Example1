@@ -1,9 +1,9 @@
 # Quasar_Example1
-Example of how to use Quasar framework with Vue3 and Vuex
+Example of how to use Quasar v.2x with Vue3 and Vuex
 
 Instructions from: Danny Connell
 
-Step 1. (Optional) Install the Blobal CLI
+Step 1. (Optional) Install the Global CLI
 $ npm install -g @quasar/cli
 
 Step 2. Start developing
