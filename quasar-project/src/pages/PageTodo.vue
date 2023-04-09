@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page class="q-pa-md overflow-hidden">
     <div class="q-pa-md absolute full-width full-height column">
 
       <div class="row q-mb-lg">
@@ -86,6 +86,7 @@
   .q-scroll-area-tasks {
     display:flex;
     flex-grow:1;
+    overflow-x:hidden;
   }
 
 </style>
