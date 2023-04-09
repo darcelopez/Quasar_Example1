@@ -38,11 +38,23 @@
         <q-item-label header>More</q-item-label>
 
         <q-item
-        to="/settings/help"
+          to="/settings/help"
           tag="label"
           v-ripple>
           <q-item-section>
             <q-item-label>Help</q-item-label>
+          </q-item-section>
+          <q-item-section side >
+            <q-icon name="chevron_right"/>
+          </q-item-section>
+        </q-item>
+
+        <q-item
+          @click="visitOurWebSite"
+          tag="label"
+          v-ripple>
+          <q-item-section>
+            <q-item-label>Visit our website</q-item-label>
           </q-item-section>
           <q-item-section side >
             <q-icon name="chevron_right"/>
@@ -56,6 +68,7 @@
 <script>
   import { defineComponent } from 'vue'
   import { mapGetters, mapActions } from 'vuex'
+  import { openURL } from 'quasar'
 
   export default defineComponent({
     name: 'PageSettings',
@@ -84,7 +97,10 @@
       }
     },
     methods: {
-      ...mapActions('storesettings', ['setShow12HourTimeFormat', 'setShowTasksInOneList'])
+      ...mapActions('storesettings', ['setShow12HourTimeFormat', 'setShowTasksInOneList']),
+      visitOurWebSite(){
+        openURL('http://www.google.com')
+      }
     }
   })
 </script>
