@@ -4,9 +4,16 @@
 
 <script>
   import { defineComponent } from 'vue'
+  import { mapActions } from 'vuex'
 
   export default defineComponent({
-    name: 'App'
+    name: 'App',
+    mounted(){
+      this.getSettings()
+    },
+    methods: {
+      ...mapActions('storesettings', ['getSettings'])
+    }
   })
 </script>
 
@@ -15,3 +22,4 @@
     text-decoration: line-through;
   }
 </style>
+ 
