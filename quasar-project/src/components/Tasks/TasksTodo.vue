@@ -6,6 +6,7 @@
         >
         <div>
             <list-header
+                v-if="!settings.showTasksInOneList"
                 bgColor="bg-orange-4"
                 >Todo</list-header>
             <q-list 
@@ -25,11 +26,16 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+    
     export default {
         props:['tasksTodo'],
         components: {
             'task' : require('components/Tasks/Task.vue').default,
             'list-header' : require('components/Tasks/Modals/Shared/ListHeader.vue').default,
+        },
+        computed: {
+            ...mapGetters('storesettings', ['settings']),
         }
 
     }
