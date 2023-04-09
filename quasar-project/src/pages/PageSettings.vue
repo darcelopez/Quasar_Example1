@@ -1,35 +1,55 @@
 <template>
     <q-page padding>
+      <q-list
+        class="q-mb-md"
+        bordered
+        padding>
+
+        <q-item-label header>Settings</q-item-label>
+        <q-separator spaced />
+
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Show 12 hours time format</q-item-label>
+          </q-item-section>
+          <q-item-section side >
+            <q-toggle
+              v-model="show12HourTimeFormat" 
+              color="blue"
+              val="battery" />
+          </q-item-section>
+        </q-item>
+
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Show tasks in one list</q-item-label>
+          </q-item-section>
+          <q-item-section side >
+            <q-toggle
+              v-model="showTasksInOneList" 
+              color="blue"
+              val="battery" />
+          </q-item-section>
+        </q-item>
+
+      </q-list>
+
       <q-list bordered padding>
+        <q-item-label header>More</q-item-label>
 
-      <q-item-label header>Settings</q-item-label>
-      <q-separator spaced />
+        <q-item
+        to="/settings/help"
+          tag="label"
+          v-ripple>
+          <q-item-section>
+            <q-item-label>Help</q-item-label>
+          </q-item-section>
+          <q-item-section side >
+            <q-icon name="chevron_right"/>
+          </q-item-section>
+        </q-item>
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Show 12 hours time format</q-item-label>
-        </q-item-section>
-        <q-item-section side >
-          <q-toggle
-            v-model="show12HourTimeFormat" 
-            color="blue"
-            val="battery" />
-        </q-item-section>
-      </q-item>
-
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Show tasks in one list</q-item-label>
-        </q-item-section>
-        <q-item-section side >
-          <q-toggle
-            v-model="showTasksInOneList" 
-            color="blue"
-            val="battery" />
-        </q-item-section>
-      </q-item>
-
-    </q-list>
+      </q-list>
     </q-page>
 </template>
   
