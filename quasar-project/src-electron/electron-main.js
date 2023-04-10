@@ -1,16 +1,20 @@
-import { app, BrowserWindow, nativeTheme } from 'electron'
+import { app, BrowserWindow, nativeTheme, Menu } from 'electron'
 import path from 'path'
 import os from 'os'
+import { menuTemplate } from './electron-main-menu'
 
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform()
+// needed to customize menu
+
+const menu = Menu.buildFromTemplate(menuTemplate)
 
 try {
   if (platform === 'win32' && nativeTheme.shouldUseDarkColors === true) {
     require('fs').unlinkSync(path.join(app.getPath('userData'), 'DevTools Extensions'))
   }
 } catch (_) { }
-
+ 
 let mainWindow
 
 function createWindow () {
@@ -21,6 +25,8 @@ function createWindow () {
     icon: path.resolve(__dirname, 'icons/icon.png'), // tray icon
     width: 1000,
     height: 600,
+    minWidth:800,
+    minHeight:500,
     useContentSize: true,
     webPreferences: {
       contextIsolation: true,
@@ -44,18 +50,16 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
 }
 
-app.whenReady().then(createWindow)
+// App events =====================================================
+app.whenReady().then(() => {
+  createWindow()
+  Menu.setApplicationMenu(menu)
+})
 
 app.on('window-all-closed', () => {
-  if (platform !== 'darwin') {
-    app.quit()
-  }
+  app.quit()
 })
 
-app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow()
-  }
-})
