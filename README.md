@@ -22,3 +22,22 @@ $ npm init quasar
 Setp 3. Run de project
 $ cd project-folder
 $ quasar dev 
+
+# Once finish development
+Can Build the app for production
+
+$ quasar build
+
+
+# Using Electron
+In order to develop/build a Quasar Electron app, we need to add the Electron mode to our Quasar project. Run the follwing:
+$ quasar mode add electron
+
+To start developing with Electron execute following command:
+$ quasar dev -m electron
+
+When "Command name was not available. Please run again." shows at the command window, just delete node_modules folder and execute command
+$ npm install
+
+...then execute again
+$ quasar dev -m electron
