@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md overflow-hidden">
+  <q-page class="q-pa-md overflow-hidden q-page-wrapper">
     <div class="q-pa-md absolute full-width full-height column">
 
       <div class="row q-mb-lg">
@@ -84,11 +84,23 @@
   })
 </script>
 
-<style>
+<style lang="scss">
   .q-scroll-area-tasks {
     display:flex;
     flex-grow:1;
     overflow-x:hidden;
+  }
+  .q-scroll-area-tasks {
+    display: flex;
+    flex-grow: 1;
+    .scroll {
+      .height: auto !important;
+    }
+  }
+  .electron {
+    .q-page-wrapper {
+      margin-right: 32px;
+    }
   }
 
 </style>
