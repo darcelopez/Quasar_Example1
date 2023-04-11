@@ -11,6 +11,7 @@ export const menuTemplate = [
       { role: 'about' },
       { 
         label:'Settings',
+        accelerator: 'CmdOrCtrl+,',
         click(){
           mainWindow.webContents.send('show-settings')
         }
