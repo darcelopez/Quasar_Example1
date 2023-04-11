@@ -29,13 +29,18 @@
  */
 import { contextBridge, ipcRenderer } from 'electron'
      
-const validChannels = ['show-settings']
+const validChannels = ['show-settings', 'quit-app']
  
 contextBridge.exposeInMainWorld(
   'myWindowAPI', {
   on: (channel, func) => {
     if (validChannels.includes(channel)) {
       ipcRenderer.on(channel, (event, ...args) => func(...args))
+    }
+  },
+  send: (channel) => {
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel)
     }
   },
 },

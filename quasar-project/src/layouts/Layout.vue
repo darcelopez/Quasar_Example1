@@ -41,6 +41,24 @@
           :key="link.title"
           v-bind="link"
         />
+
+        <q-item
+          v-if="$q.platform.is.electron"
+          @click="quitApp"
+          clickable
+          exact
+          class="text-grey-5 absolute-bottom"
+        >
+          <q-item-section avatar>
+            <q-icon name="power_settings_new" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Quit</q-item-label>
+            <q-item-label caption>Close the app</q-item-label>
+          </q-item-section>
+        </q-item>
+
       </q-list>
     </q-drawer>
 
@@ -81,6 +99,12 @@
       icon: 'settings',
       link: '/settings'
     },
+    // {
+    //   title: 'Exit',
+    //   caption: 'Close the aplication',
+    //   icon: 'power_settings_new',
+    //   link: '/'
+    // },
   ]
 
   export default defineComponent({
@@ -99,6 +123,18 @@
         toggleLeftDrawer () {
           leftDrawerOpen.value = !leftDrawerOpen.value
         }
+      }
+    },
+    methods: {
+      quitApp() {
+         this.$q.dialog({
+          title:'Confirm',
+          message:'Really quit Awesome App?',
+          cancel: true,
+          persistent: true,
+         }).onOk(() => {
+          window.myWindowAPI.send('quit-app')
+         })
       }
     }
   })

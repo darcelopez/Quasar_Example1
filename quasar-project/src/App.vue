@@ -5,10 +5,6 @@
 <script>
   import { defineComponent } from 'vue'
   import { mapActions } from 'vuex'
-  // const { ipcRenderer } = require('electron');
-
-  // const fs = window.electronFs
-  // const jsonContent = JSON.parse(fs.readFileSync(SOME_PATH))
 
   export default defineComponent({
     name: 'App',
