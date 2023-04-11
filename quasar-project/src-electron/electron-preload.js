@@ -27,3 +27,16 @@
  *   }
  * }
  */
+import { contextBridge, ipcRenderer } from 'electron'
+     
+const validChannels = ['show-settings']
+ 
+contextBridge.exposeInMainWorld(
+  'myWindowAPI', {
+  on: (channel, func) => {
+    if (validChannels.includes(channel)) {
+      ipcRenderer.on(channel, (event, ...args) => func(...args))
+    }
+  },
+},
+)

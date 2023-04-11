@@ -222,6 +222,8 @@ module.exports = configure(function (ctx) {
       
       chainWebpackPreload (/* chain */) {},
       
-    }
+    },
+
+    
   }
 });

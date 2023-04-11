@@ -11,6 +11,8 @@
   "dependencies": {
     "@quasar/extras": "^1.16.2",
     "core-js": "^3.6.5",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "quasar": "^2.11.10",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",
@@ -18,9 +20,9 @@
   },
   "devDependencies": {
     "@quasar/app-webpack": "^3.0.0",
+    "electron": "^24.0.0",
     "node-sass": "^8.0.0",
-    "sass-loader": "^13.2.2",
-    "electron": "^24.0.0"
+    "sass-loader": "^13.2.2"
   },
   "browserslist": [
     "last 10 Chrome versions",
