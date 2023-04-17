@@ -30,7 +30,19 @@ export const menuTemplate = [
   {
     label: 'File',
     submenu: [
-      isMac ? { role: 'close' } : { role: 'quit' }
+      // isMac ? { role: 'close' } : { role: 'quit' }
+      ...(isMac ? [
+        { role: 'close' }
+      ]:[
+        {
+          label: 'Settings',
+          accelerator: 'CmdOrCtrl+,',
+          click(){
+            mainWindow.webContents.send('show-settings')
+          }
+        },
+        { role: 'quit' }
+      ])
     ]
   },
   // { role: 'editMenu' }

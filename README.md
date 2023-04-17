@@ -29,8 +29,8 @@ Can Build the app for production
 $ quasar build
 
 
-# Using Electron
-In order to develop/build a Quasar Electron app, we need to add the Electron mode to our Quasar project. Run the follwing:
+# Using Electron (Export Mac app)
+In order to develop/build a Quasar Electron app, we need to add the Electron mode to our Quasar project. Run the following:
 $ quasar mode add electron
 
 To start developing with Electron execute following command:
@@ -41,3 +41,22 @@ $ npm install
 
 ...then execute again
 $ quasar dev -m electron
+
+
+To export the Windows app execute the following command"
+$ quasar build -m electron
+
+You may find the Mac application in the folder dist/electron/QuasarApp-darwin-x64
+
+
+
+# Using Electron (Export Windows app)
+Execute the following code (same as the one to get the mac app)
+
+$ quasar build -m electron
+
+You may find the Mac application in the folder dist/electron/Quasar App-win32-x64
+
+Aditional requirements if need to test oh a Mac computer (optional)
+.Virtual Box
+.Windows Development Image for VirtualBox
