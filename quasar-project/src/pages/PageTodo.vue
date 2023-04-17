@@ -89,6 +89,9 @@
     display:flex;
     flex-grow:1;
     overflow-x:hidden;
+    .mobile & {
+      flex-basis: 100px;
+    }
   }
   .q-scroll-area-tasks {
     display: flex;
