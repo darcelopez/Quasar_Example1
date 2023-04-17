@@ -4,7 +4,7 @@
             outlined
             v-model="value"
             :rules="[val => !!val || 'Field is required']"
-            autofocus
+            v-autofocus
             v-select-all
             ref="name"
             label="Task name"
@@ -23,11 +23,13 @@
 
 <script>
     import { selectAll } from 'src/directives/directive-select-all'
+    import { autofocus } from 'src/directives/directive-autofocus'
 
     export default {
         props: ['modelValue'],
         directives: {
-            selectAll
+            selectAll,
+            autofocus
         },
         emits: ['update:modelValue'],
         computed: {
