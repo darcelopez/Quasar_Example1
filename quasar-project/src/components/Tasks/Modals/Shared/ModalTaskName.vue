@@ -4,7 +4,7 @@
             outlined
             v-model="value"
             :rules="[val => !!val || 'Field is required']"
-            v-autofocus
+            v-autofocus="{ delayCordova:700 }"
             v-select-all
             ref="name"
             label="Task name"

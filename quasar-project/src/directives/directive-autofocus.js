@@ -6,12 +6,15 @@ export const autofocus = {
     // },
   
     // bind
-    beforeMount(el) {
+    beforeMount(el, binding) {
       // console.log('Directive beforeMount (bind)')
       let input = el.querySelector('.q-field__native')
       let delay = 0
       if (Platform.is.cordova) {
         delay = 700
+        if (binding) {
+            delay = binding.value.delayCordova
+        }
       }
       setTimeout(() => {
         input.focus()
