@@ -15,6 +15,7 @@
                 :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address']"
                 ref="email"
                 lazy-rules
+                type="email"
                 outlined 
                 class="col"
                 label="Email"
