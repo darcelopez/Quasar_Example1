@@ -92,3 +92,6 @@ $ cordova plugin add cordova-plugin-inappbrowser
 Launch development mode:
 $ cd ..
 $ quasar dev -m cordova -T ios
+
+Build the app for iOS
+$ quasar build -m cordova -T ios
