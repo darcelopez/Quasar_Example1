@@ -60,3 +60,31 @@ You may find the Mac application in the folder dist/electron/Quasar App-win32-x6
 Aditional requirements if need to test oh a Mac computer (optional)
 .Virtual Box
 .Windows Development Image for VirtualBox
+
+
+# Using Cordova (Export iOS app)
+.Download and install Cordova
+$ npm install -g cordova
+
+.Download XCode ( developer.apple.com/download/more/ ) an Apple ID is required to login
+    Select Xcode 10.2.1 (Apr 17, 2019 5.6GB)
+    Extract it and install it
+    You might need to launch Xcode once it's installed and choose to install additional components from popup
+
+Add Cordova to the project
+$ quasar mode add cordova
+$ cd src-cordova
+
+Install Ionic webview plugin because Cordova webview is deprecated (https://quasar.dev/quasar-cli-webpack/developing-cordova-apps/preparation)
+$ cordova plugin add cordova-plugin-ionic-webview
+
+Add Cordova platform
+$ cordova platform add ios
+
+To verify that everything is in order, type:
+$ cordova requirements
+
+
+Launch development mode:
+$ quasar dev -m cordova -T ios
+
