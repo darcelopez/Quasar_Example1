@@ -14,11 +14,13 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-ios": "^6.3.0",
+    "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-ionic-webview": "^5.0.0"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "ios"

@@ -85,6 +85,10 @@ To verify that everything is in order, type:
 $ cordova requirements
 
 
-Launch development mode:
-$ quasar dev -m cordova -T ios
+Add InAppBrowser to open link wihin the app environment
+$ cordova plugin add cordova-plugin-inappbrowser
 
+
+Launch development mode:
+$ cd ..
+$ quasar dev -m cordova -T ios
