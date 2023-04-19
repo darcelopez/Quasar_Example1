@@ -57,7 +57,7 @@ $ quasar build -m electron
 
 You may find the Mac application in the folder dist/electron/Quasar App-win32-x64
 
-Aditional requirements if need to test oh a Mac computer (optional)
+Aditional requirements if need to test on a Mac computer (optional)
 .Virtual Box
 .Windows Development Image for VirtualBox
 
